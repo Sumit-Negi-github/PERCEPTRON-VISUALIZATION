@@ -1,4 +1,4 @@
-''' ------------------------------------PERCEPTRON VISUALIZATION------------------------------------------------ '''
+'''--------------------------------------------------------------PERCEPTRON VISUALIZATION ------------------------------------------'''
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import seaborn as sns
@@ -218,7 +218,7 @@ elif (dimension_of_data_point==2):
                   continue
               else:
                   break
-
+          
           '''Rest of the portion of this else loop is just for plotting purpose'''
           total=len(classifier)+1
           rows=math.ceil(math.sqrt(total))
@@ -252,11 +252,16 @@ elif (dimension_of_data_point==2):
                   yy = np.linspace(y_min-3,y_max+3,10)
                   XX,YY = np.meshgrid(xx,yy)
                   zz=(-m[0]*XX-m[1]*YY)/m[2]
-              else:
+              elif(m[1]!=0):
                   xx=np.linspace(x_min-3,x_max+3,10)
                   zz=np.linspace(z_min-3,z_max+3,10)
                   XX,zz=np.meshgrid(xx,zz)
-                  YY=(-m[0]*XX)/m[1]  
+                  YY=(-m[0]*XX)/m[1]
+              else:
+                  XX=np.linspace(x_min-3,x_max+3,10)
+                  zz=np.linspace(z_min-3,z_max+3,10)
+                  XX,zz=np.meshgrid(xx,zz)
+                  YY=0
               
               ax.plot_surface(XX,YY,zz,alpha=0.5)
               ax.axes.xaxis.set_ticklabels([])
